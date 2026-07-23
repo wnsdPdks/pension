@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "meta": {
+    "title": "아빠 퇴직연금 (IRP)",
+    "subtitle": "ETF 모의 운용 · 예준 관리",
+    "inception": "2026-07-23",
+    "updated": null,
+    "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요."
+  },
+  "account": { "initialCash": 0 },
+  "config": { "feeRate": 0.00015, "tax": 0 },
+  "holdings": {},
+  "cash": 0,
+  "transactions": [],
+  "notes": [],
+  "prices": {},
+  "navHistory": [],
+  "watchlist": []
+}

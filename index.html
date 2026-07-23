@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>아빠 퇴직연금</title>
+<style>
+:root{
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --sub:#68738a; --line:#e7ebf3;
+  --up:#e5384f; --down:#2f6fed; --flat:#8a94a6; --brand:#2f6fed; --brand2:#5b8cff;
+  --shadow:0 2px 14px rgba(24,39,75,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:16px 16px 60px;}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 2px 14px;}
+.title{font-size:19px;font-weight:800;letter-spacing:-.3px;}
+.subtitle{font-size:12.5px;color:var(--sub);margin-top:2px;}
+.pill{font-size:11.5px;color:var(--sub);background:#eef2f9;border-radius:999px;padding:5px 10px;white-space:nowrap;}
+.pill b{color:#159a52;font-weight:700}
+.btn{border:0;background:var(--brand);color:#fff;font-weight:700;font-size:13px;border-radius:10px;padding:9px 14px;cursor:pointer;}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:#eaf0fb;color:var(--brand)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-bottom:14px;}
+.hero .label{font-size:13px;color:var(--sub);font-weight:600;}
+.hero .total{font-size:38px;font-weight:800;letter-spacing:-1px;margin:6px 0 2px;}
+.hero .pl{font-size:16px;font-weight:700;}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--sub);}
+.hero .meta b{color:var(--ink);font-weight:700}
+.sec-h{font-size:14px;font-weight:800;margin:2px 0 14px;display:flex;align-items:center;gap:8px;}
+.sec-h .dot{width:8px;height:8px;border-radius:3px;background:var(--brand)}
+.up{color:var(--up)} .down{color:var(--down)} .flat{color:var(--flat)}
+/* donut */
+.alloc{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.legend{flex:1;min-width:180px;}
+.legrow{display:flex;align-items:center;gap:8px;font-size:13px;padding:5px 0;}
+.legrow .sw{width:11px;height:11px;border-radius:3px;flex:none}
+.legrow .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.legrow .pc{font-weight:700;color:var(--sub)}
+/* holding */
+.hold{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line);}
+.hold:first-of-type{border-top:0}
+.hold .ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;}
+.hold .info{flex:1;min-width:0}
+.hold .nm{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hold .code{font-size:11.5px;color:var(--sub);margin-top:1px}
+.hold .rt{text-align:right;white-space:nowrap}
+.hold .rt .px{font-weight:700;font-size:15px}
+.hold .rt .ch{font-size:12px;font-weight:600;margin-top:1px}
+.hbar{height:5px;background:#eef1f7;border-radius:99px;margin-top:9px;overflow:hidden}
+.hbar>span{display:block;height:100%;border-radius:99px}
+.hd2{display:flex;justify-content:space-between;font-size:12px;color:var(--sub);margin-top:8px}
+.hd2 b{color:var(--ink)}
+/* notes / timeline */
+.note{font-size:14px;line-height:1.65;color:#2b3547;background:#f6f9ff;border:1px solid #e3ecff;border-radius:12px;padding:13px 15px;margin-bottom:10px;}
+.note .when{font-size:11.5px;color:var(--sub);margin-bottom:4px}
+.tl{position:relative;padding-left:22px;}
+.tl:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+.ev{position:relative;padding:0 0 18px 4px;}
+.ev:last-child{padding-bottom:0}
+.ev .mk{position:absolute;left:-22px;top:2px;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line)}
+.ev .row1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:800;border-radius:6px;padding:2px 7px;color:#fff}
+.b-buy{background:var(--up)} .b-sell{background:var(--down)} .b-dep{background:#5b8cff} .b-div{background:#159a52} .b-wd{background:#8a94a6}
+.ev .t{font-size:11.5px;color:var(--sub)}
+.ev .main{font-size:14px;font-weight:700;margin:3px 0 2px}
+.ev .reason{font-size:13px;color:#48546b;line-height:1.6}
+.empty{text-align:center;color:var(--sub);padding:26px 10px;font-size:14px;line-height:1.7}
+.foot{text-align:center;color:#aab2c2;font-size:11.5px;margin-top:22px;line-height:1.6}
+.skel{color:var(--sub);text-align:center;padding:40px;font-size:14px}
+@media(max-width:480px){.hero .total{font-size:32px}.wrap{padding-left:12px;padding-right:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="title" id="m-title">아빠 퇴직연금</div>
+      <div class="subtitle" id="m-sub">ETF 모의 운용</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="pill" id="src-pill">시세 연결 중…</span>
+      <button class="btn ghost" id="btn-refresh" onclick="refresh()">↻ 새로고침</button>
+    </div>
+  </div>
+
+  <div id="app"><div class="skel">불러오는 중…</div></div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const PALETTE=['#2f6fed','#e5384f','#159a52','#f59e0b','#8b5cf6','#0ea5e9','#ec4899','#14b8a6','#f97316','#64748b'];
+const $=id=>document.getElementById(id);
+const won=n=>Math.round(n).toLocaleString('ko-KR');
+const pct=n=>(n>=0?'+':'')+n.toFixed(2)+'%';
+const cls=n=>n>0?'up':n<0?'down':'flat';
+const arrow=n=>n>0?'▲':n<0?'▼':'–';
+let DATA=null, PX={};
+
+/* ---------- 시세 ---------- */
+const PROXIES=[u=>u,u=>'https://corsproxy.io/?url='+encodeURIComponent(u),
+  u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)];
+let goodProxy=+(localStorage.getItem('pf_proxy')||0);
+async function fetchJson(url){
+  const order=[...new Set([goodProxy,0,1,2,3])];
+  for(const i of order){try{
+    const r=await fetch(PROXIES[i](url),{signal:AbortSignal.timeout(9000)});
+    if(!r.ok)continue; const j=await r.json();
+    goodProxy=i; localStorage.setItem('pf_proxy',i); return j;
+  }catch(e){}}
+  throw new Error('시세 실패');
+}
+const KIS_REMOTE='https://wqehreukcaluzjjzhdew.supabase.co/functions/v1/kis-quote';
+let kisBase=null;
+async function checkKis(){
+  kisBase=null;
+  try{const r=await fetch(KIS_REMOTE+'/health',{signal:AbortSignal.timeout(5000)});
+    if(r.ok&&(await r.json()).ok)kisBase=KIS_REMOTE;}catch(e){}
+  $('src-pill').innerHTML=kisBase?'시세 <b>KIS 실시간</b>':'시세 <span style="color:#68738a">지연(공개)</span>';
+  return !!kisBase;
+}
+async function kQuote(code){
+  const r=await fetch(kisBase+'/quote?code='+code,{signal:AbortSignal.timeout(5000)});
+  if(!r.ok)throw 0; const j=await r.json(); if(j.price==null)throw 0;
+  return {price:j.price,prevClose:j.prevClose};
+}
+async function nQuote(code){
+  const j=await fetchJson('https://polling.finance.naver.com/api/realtime/domestic/stock/'+code);
+  const d=(j.datas||[])[0]; if(!d||d.nv==null)throw 0;
+  return {price:d.nv,prevClose:d.sv??(d.cv!=null?d.nv-d.cv:null),name:d.nm};
+}
+async function yQuote(sym){
+  const j=await fetchJson('https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(sym)+'?range=1d&interval=1d');
+  const m=j.chart.result[0].meta;
+  return {price:m.regularMarketPrice,prevClose:m.chartPreviousClose??m.previousClose??null};
+}
+async function quote(sym){
+  const code=sym.split('.')[0];
+  if(kisBase){try{return await kQuote(code);}catch(e){}}
+  try{return await nQuote(code);}catch(e){return await yQuote(sym);}
+}
+
+/* ---------- 로드 ---------- */
+async function load(){
+  try{
+    const r=await fetch('data.json?_='+Date.now());
+    DATA=await r.json();
+    PX=Object.fromEntries(Object.entries(DATA.prices||{}).map(([k,v])=>[k,{price:v.price,prevClose:v.prevClose}]));
+    render();
+    await refresh();
+  }catch(e){ $('app').innerHTML='<div class="card empty">데이터를 불러오지 못했어요.<br>같은 폴더의 data.json을 확인해 주세요.</div>'; }
+}
+async function refresh(){
+  if(!DATA)return;
+  $('btn-refresh').disabled=true; $('btn-refresh').textContent='↻ 갱신 중…';
+  await checkKis();
+  const syms=Object.keys(DATA.holdings||{});
+  const res=await Promise.allSettled(syms.map(s=>quote(s).then(q=>[s,q])));
+  for(const r of res){ if(r.status==='fulfilled'){const[s,q]=r.value; PX[s]={...PX[s],...q};} }
+  $('btn-refresh').disabled=false; $('btn-refresh').textContent='↻ 새로고침';
+  render();
+}
+
+/* ---------- 계산 ---------- */
+function calc(){
+  const H=DATA.holdings||{}; const rows=[];
+  let stock=0, prevStock=0, cost=0;
+  for(const [sym,h] of Object.entries(H)){
+    const p=PX[sym]||{}; const avg=h.qty?h.cost/h.qty:0;
+    const price=p.price??avg; const prev=p.prevClose??price;
+    const val=price*h.qty; stock+=val; prevStock+=prev*h.qty; cost+=h.cost;
+    rows.push({sym,name:h.name,qty:h.qty,avg,price,prev,val,
+      plPct:avg?(price/avg-1)*100:0, dayPct:prev?(price/prev-1)*100:0});
+  }
+  rows.sort((a,b)=>b.val-a.val);
+  const cash=DATA.cash||0; const total=stock+cash;
+  const principal=(DATA.account?.initialCash||0)
+    +sum(DATA.transactions,t=>t.side==='deposit'?t.amount:0)
+    -sum(DATA.transactions,t=>t.side==='withdraw'?t.amount:0);
+  return {rows,stock,cash,total,principal,cost,
+    pl:total-principal, plPct:principal?(total/principal-1)*100:0,
+    dayChange:stock-prevStock, dayPct:prevStock?(stock/prevStock-1)*100:0};
+}
+const sum=(a,f)=>(a||[]).reduce((s,x)=>s+(f(x)||0),0);
+
+/* ---------- 렌더 ---------- */
+function render(){
+  if(!DATA)return;
+  $('m-title').textContent=DATA.meta?.title||'아빠 퇴직연금';
+  $('m-sub').textContent=DATA.meta?.subtitle||'';
+  const c=calc();
+  let html='';
+  // hero
+  html+=`<div class="card hero">
+    <div class="label">총 평가액</div>
+    <div class="total">${won(c.total)}<span style="font-size:20px;font-weight:700"> 원</span></div>
+    <div class="pl ${cls(c.pl)}">평가손익 ${c.pl>=0?'+':''}${won(c.pl)}원 (${pct(c.plPct)})</div>
+    <div class="meta">
+      <span>원금 <b>${won(c.principal)}원</b></span>
+      <span>주식 <b>${won(c.stock)}원</b></span>
+      <span>현금 <b>${won(c.cash)}원</b></span>
+      ${c.stock?`<span>오늘 <b class="${cls(c.dayChange)}">${arrow(c.dayChange)} ${won(Math.abs(c.dayChange))}원 (${pct(c.dayPct)})</b></span>`:''}
+    </div>
+  </div>`;
+
+  if(c.rows.length){
+    // 자산배분
+    const items=[...c.rows.map((r,i)=>({name:r.name,val:r.val,color:PALETTE[i%PALETTE.length]})),
+                 {name:'현금',val:c.cash,color:'#cfd6e4'}];
+    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>자산 배분</div>
+      <div class="alloc">${donut(items,c.total)}<div class="legend">${
+        items.map(it=>`<div class="legrow"><span class="sw" style="background:${it.color}"></span>
+          <span class="nm">${it.name}</span><span class="pc">${(it.val/c.total*100).toFixed(1)}%</span></div>`).join('')
+      }</div></div></div>`;
+
+    // 보유 ETF
+    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>보유 ETF</div>`;
+    for(let i=0;i<c.rows.length;i++){const r=c.rows[i];const col=PALETTE[i%PALETTE.length];
+      html+=`<div class="hold">
+        <div class="ic" style="background:${col}">${(r.name||'?').slice(0,2)}</div>
+        <div class="info">
+          <div class="nm">${r.name||r.sym}</div>
+          <div class="code">${r.sym.split('.')[0]} · ${r.qty}주 · 평단 ${won(r.avg)}</div>
+          <div class="hbar"><span style="width:${(r.val/c.total*100).toFixed(1)}%;background:${col}"></span></div>
+          <div class="hd2"><span>평가액 <b>${won(r.val)}원</b></span>
+            <span>평가손익 <b class="${cls(r.plPct)}">${pct(r.plPct)}</b></span></div>
+        </div>
+        <div class="rt"><div class="px">${won(r.price)}</div>
+          <div class="ch ${cls(r.dayPct)}">${arrow(r.dayPct)} ${pct(r.dayPct)}</div></div>
+      </div>`;
+    }
+    html+=`</div>`;
+  } else {
+    html+=`<div class="card"><div class="empty">아직 담은 ETF가 없어요.<br>
+      ${DATA.meta?.managerNote||'곧 포트폴리오를 구성할게요.'}</div></div>`;
+  }
+
+  // 예준 코멘트
+  const notes=[...(DATA.notes||[])].sort((a,b)=>b.ts<a.ts?-1:1);
+  if(DATA.meta?.managerNote || notes.length){
+    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>예준의 코멘트</div>`;
+    if(DATA.meta?.managerNote && c.rows.length)
+      html+=`<div class="note">${esc(DATA.meta.managerNote)}</div>`;
+    for(const n of notes) html+=`<div class="note"><div class="when">${n.ts.slice(0,10)}</div>${esc(n.text)}</div>`;
+    html+=`</div>`;
+  }
+
+  // 매매 일지
+  const txs=[...(DATA.transactions||[])].sort((a,b)=>b.ts<a.ts?-1:b.ts>a.ts?1:(b.id||0)-(a.id||0));
+  if(txs.length){
+    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>매매 일지</div><div class="tl">`;
+    for(const t of txs) html+=eventHTML(t);
+    html+=`</div></div>`;
+  }
+
+  $('app').innerHTML=html;
+  const up=DATA.meta?.updated;
+  $('foot').innerHTML=`모의 운용 · 실제 매매가 아닙니다<br>${up?'마지막 기록 '+up.replace('T',' ').slice(0,16):''}`;
+}
+function eventHTML(t){
+  const B={buy:['매수','b-buy'],sell:['매도','b-sell'],deposit:['입금','b-dep'],withdraw:['출금','b-wd'],dividend:['분배금','b-div']}[t.side]||['','b-dep'];
+  const colors={buy:'var(--up)',sell:'var(--down)',deposit:'#5b8cff',withdraw:'#8a94a6',dividend:'#159a52'};
+  let main='';
+  if(t.side==='deposit'||t.side==='withdraw') main=`${won(t.amount)}원`;
+  else if(t.side==='dividend') main=`${t.name||t.symbol} · 세후 +${won(t.net||0)}원`;
+  else main=`${t.name||t.symbol} ${t.qty}주 @ ${won(t.price)}원`;
+  return `<div class="ev"><span class="mk" style="box-shadow:0 0 0 1.5px ${colors[t.side]||'#ccc'}"></span>
+    <div class="row1"><span class="badge ${B[1]}">${B[0]}</span><span class="t">${t.ts.slice(0,10)}</span></div>
+    <div class="main">${main}</div>
+    ${t.reason?`<div class="reason">${esc(t.reason)}</div>`:''}</div>`;
+}
+function donut(items,total){
+  const R=54,C=2*Math.PI*R,sz=140; let off=0; let segs='';
+  const tot=total||1;
+  for(const it of items){ if(it.val<=0)continue; const frac=it.val/tot;
+    segs+=`<circle cx="${sz/2}" cy="${sz/2}" r="${R}" fill="none" stroke="${it.color}" stroke-width="20"
+      stroke-dasharray="${(frac*C).toFixed(2)} ${C.toFixed(2)}" stroke-dashoffset="${(-off*C).toFixed(2)}"
+      transform="rotate(-90 ${sz/2} ${sz/2})"/>`; off+=frac; }
+  return `<svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}">${segs}
+    <text x="${sz/2}" y="${sz/2-4}" text-anchor="middle" font-size="11" fill="#68738a">ETF 비중</text>
+    <text x="${sz/2}" y="${sz/2+13}" text-anchor="middle" font-size="15" font-weight="800" fill="#1a2233">${
+      (100-(items[items.length-1].val/tot*100)).toFixed(0)}%</text></svg>`;
+}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+load();
+setInterval(refresh, 60000);
+</script>
+</body>
+</html>
