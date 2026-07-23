@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-23T23:33:55",
+    "updated": "2026-07-23T23:35:13",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요."
   },
   "account": {
@@ -34,9 +34,14 @@
       "name": "RISE 미국AI전력인프라액티브",
       "qty": 4244,
       "cost": 47999640
+    },
+    "379800.KS": {
+      "name": "KODEX 미국S&P500",
+      "qty": 1447,
+      "cost": 35986890
     }
   },
-  "cash": 135985502,
+  "cash": 99993214,
   "transactions": [
     {
       "id": 1,
@@ -88,6 +93,17 @@
       "side": "deposit",
       "amount": 340000000,
       "reason": "원금"
+    },
+    {
+      "id": 8,
+      "ts": "2026-07-23T23:35:13",
+      "side": "buy",
+      "symbol": "379800.KS",
+      "name": "KODEX 미국S&P500",
+      "qty": 1447,
+      "price": 24870,
+      "fee": 5398,
+      "reason": ""
     }
   ],
   "notes": [],
