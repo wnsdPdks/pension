@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-23T23:26:31",
+    "updated": "2026-07-23T23:27:37",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요."
   },
   "account": {
@@ -26,7 +26,7 @@
       "cost": 35999960
     }
   },
-  "cash": -108008359,
+  "cash": -60023458,
   "transactions": [
     {
       "id": 1,
@@ -49,6 +49,18 @@
       "price": 11335,
       "fee": 5400,
       "reason": ""
+    },
+    {
+      "id": 4,
+      "ts": "2026-07-23T23:27:37",
+      "side": "sell",
+      "symbol": "396500.KS",
+      "name": "TIGER 반도체TOP10",
+      "qty": 1273,
+      "price": 37700,
+      "fee": 7199,
+      "reason": "",
+      "tax": 0
     }
   ],
   "notes": [],
