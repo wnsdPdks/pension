@@ -110,5 +110,726 @@
   "prices": {},
   "navHistory": [],
   "watchlist": [],
-  "etfCompositions": {}
+  "etfCompositions": {
+    "0181B0.KS": {
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "asOf": "2026-07-23",
+      "source": "NH-Amundi자산운용 HANARO ETF 공식 홈페이지(PDF 구성종목)",
+      "items": [
+        {
+          "code": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 19.5
+        },
+        {
+          "code": "SNDK",
+          "name": "Sandisk Corp",
+          "weight": 16.19
+        },
+        {
+          "code": "STX",
+          "name": "Seagate Technology Holdings PLC",
+          "weight": 15.51
+        },
+        {
+          "code": "WDC",
+          "name": "Western Digital Corp",
+          "weight": 14.17
+        },
+        {
+          "code": "SIMO",
+          "name": "Silicon Motion Technology Corp",
+          "weight": 7.86
+        },
+        {
+          "code": "ASML",
+          "name": "ASML Holding NV",
+          "weight": 5.77
+        },
+        {
+          "code": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 5.56
+        },
+        {
+          "code": "KLAC",
+          "name": "KLA Corp",
+          "weight": 5.47
+        },
+        {
+          "code": "ASX",
+          "name": "ASE Technology Holding Co Ltd",
+          "weight": 5.36
+        },
+        {
+          "code": "AMKR",
+          "name": "Amkor Technology Inc",
+          "weight": 4.28
+        }
+      ]
+    },
+    "446720.KS": {
+      "name": "SOL 미국배당다우존스",
+      "asOf": "2026-07-24",
+      "source": "신한자산운용 SOL ETF 공식 홈페이지(구성종목 PDF)",
+      "items": [
+        {
+          "code": "ABT",
+          "name": "Abbott Laboratories",
+          "weight": 4.51
+        },
+        {
+          "code": "UNH",
+          "name": "UnitedHealth Group",
+          "weight": 4.47
+        },
+        {
+          "code": "MRK",
+          "name": "Merck & Co",
+          "weight": 4.34
+        },
+        {
+          "code": "AMGN",
+          "name": "Amgen",
+          "weight": 4.23
+        },
+        {
+          "code": "PG",
+          "name": "Procter & Gamble",
+          "weight": 4.16
+        },
+        {
+          "code": "HD",
+          "name": "Home Depot",
+          "weight": 4.14
+        },
+        {
+          "code": "KO",
+          "name": "Coca-Cola",
+          "weight": 4.08
+        },
+        {
+          "code": "CVX",
+          "name": "Chevron",
+          "weight": 3.97
+        },
+        {
+          "code": "COP",
+          "name": "ConocoPhillips",
+          "weight": 3.72
+        },
+        {
+          "code": "PEP",
+          "name": "PepsiCo",
+          "weight": 3.72
+        },
+        {
+          "code": "TXN",
+          "name": "Texas Instruments",
+          "weight": 3.72
+        },
+        {
+          "code": "VZ",
+          "name": "Verizon Communications",
+          "weight": 3.71
+        },
+        {
+          "code": "BMY",
+          "name": "Bristol-Myers Squibb",
+          "weight": 3.19
+        },
+        {
+          "code": "MO",
+          "name": "Altria Group",
+          "weight": 3.1
+        },
+        {
+          "code": "QCOM",
+          "name": "Qualcomm",
+          "weight": 2.74
+        },
+        {
+          "code": "LMT",
+          "name": "Lockheed Martin",
+          "weight": 2.69
+        },
+        {
+          "code": "ADP",
+          "name": "Automatic Data Processing",
+          "weight": 2.5
+        },
+        {
+          "code": "BX",
+          "name": "Blackstone Group",
+          "weight": 2.35
+        },
+        {
+          "code": "UPS",
+          "name": "United Parcel Service",
+          "weight": 2.23
+        },
+        {
+          "code": "ACN",
+          "name": "Accenture",
+          "weight": 2.21
+        },
+        {
+          "code": "CMCSA",
+          "name": "Comcast",
+          "weight": 2.16
+        },
+        {
+          "code": "EOG",
+          "name": "EOG Resources",
+          "weight": 1.97
+        },
+        {
+          "code": "SLB",
+          "name": "SLB Ltd",
+          "weight": 1.83
+        },
+        {
+          "code": "TGT",
+          "name": "Target",
+          "weight": 1.61
+        },
+        {
+          "code": "OKE",
+          "name": "ONEOK",
+          "weight": 1.49
+        },
+        {
+          "code": "F",
+          "name": "Ford Motor",
+          "weight": 1.45
+        },
+        {
+          "code": "FAST",
+          "name": "Fastenal",
+          "weight": 1.34
+        },
+        {
+          "code": "FITB",
+          "name": "Fifth Third Bancorp",
+          "weight": 1.34
+        },
+        {
+          "code": "DVN",
+          "name": "Devon Energy",
+          "weight": 1.33
+        },
+        {
+          "code": "ADM",
+          "name": "Archer-Daniels-Midland",
+          "weight": 1.08
+        },
+        {
+          "code": "KMB",
+          "name": "Kimberly-Clark",
+          "weight": 0.93
+        },
+        {
+          "code": "PAYX",
+          "name": "Paychex",
+          "weight": 0.92
+        },
+        {
+          "code": "CINF",
+          "name": "Cincinnati Financial",
+          "weight": 0.71
+        },
+        {
+          "code": "RF",
+          "name": "Regions Financial",
+          "weight": 0.68
+        },
+        {
+          "code": "HSY",
+          "name": "Hershey",
+          "weight": 0.66
+        },
+        {
+          "code": "ARES",
+          "name": "Ares Management",
+          "weight": 0.65
+        },
+        {
+          "code": "TROW",
+          "name": "T. Rowe Price Group",
+          "weight": 0.64
+        },
+        {
+          "code": "DRI",
+          "name": "Darden Restaurants",
+          "weight": 0.57
+        },
+        {
+          "code": "PFG",
+          "name": "Principal Financial Group",
+          "weight": 0.55
+        },
+        {
+          "code": "SNA",
+          "name": "Snap-on",
+          "weight": 0.54
+        },
+        {
+          "code": "GIS",
+          "name": "General Mills",
+          "weight": 0.51
+        },
+        {
+          "code": "EWBC",
+          "name": "East West Bancorp",
+          "weight": 0.46
+        },
+        {
+          "code": "BBY",
+          "name": "Best Buy",
+          "weight": 0.44
+        },
+        {
+          "code": "BR",
+          "name": "Broadridge Financial Solutions",
+          "weight": 0.43
+        },
+        {
+          "code": "DINO",
+          "name": "HF Sinclair",
+          "weight": 0.36
+        },
+        {
+          "code": "APA",
+          "name": "APA Corp",
+          "weight": 0.33
+        },
+        {
+          "code": "FNF",
+          "name": "FNF Group",
+          "weight": 0.33
+        },
+        {
+          "code": "WSO",
+          "name": "Watsco",
+          "weight": 0.33
+        },
+        {
+          "code": "AFG",
+          "name": "American Financial Group",
+          "weight": 0.25
+        }
+      ]
+    },
+    "0176E0.KS": {
+      "name": "RISE 미국AI전력인프라액티브",
+      "asOf": "2026-07-24",
+      "source": "KB자산운용 RISE ETF 공식 홈페이지(구성종목 PDF)",
+      "items": [
+        {
+          "code": "GEV",
+          "name": "GE Vernova Inc",
+          "weight": 11.41
+        },
+        {
+          "code": "VRT",
+          "name": "Vertiv Holdings Co Class A",
+          "weight": 10.86
+        },
+        {
+          "code": "BE",
+          "name": "Bloom Energy Corp Class A",
+          "weight": 9.59
+        },
+        {
+          "code": "LITE",
+          "name": "Lumentum Holdings Inc",
+          "weight": 6.53
+        },
+        {
+          "code": "MTZ",
+          "name": "MasTec Inc",
+          "weight": 5.35
+        },
+        {
+          "code": "CCJ",
+          "name": "Cameco Corp",
+          "weight": 4.93
+        },
+        {
+          "code": "MOD",
+          "name": "Modine Manufacturing",
+          "weight": 4.92
+        },
+        {
+          "code": "NXT",
+          "name": "Nextracker Inc",
+          "weight": 4.73
+        },
+        {
+          "code": "NVT",
+          "name": "nVent Electric plc",
+          "weight": 4.72
+        },
+        {
+          "code": "ETN",
+          "name": "Eaton Corp plc",
+          "weight": 4.62
+        },
+        {
+          "code": "SEI",
+          "name": "Solaris Energy Infrastructure",
+          "weight": 4.44
+        },
+        {
+          "code": "DY",
+          "name": "Dycom Industries Inc",
+          "weight": 4.39
+        },
+        {
+          "code": "PWR",
+          "name": "Quanta Services Inc",
+          "weight": 4.25
+        },
+        {
+          "code": "NEE",
+          "name": "NextEra Energy Inc",
+          "weight": 4.13
+        },
+        {
+          "code": "CRDO",
+          "name": "Credo Technology Group Holding",
+          "weight": 3.93
+        },
+        {
+          "code": "GNRC",
+          "name": "Generac Holdings Inc",
+          "weight": 3.54
+        },
+        {
+          "code": "FLNC",
+          "name": "Fluence Energy Inc",
+          "weight": 2.63
+        },
+        {
+          "code": "SPCX",
+          "name": "Space Exploration Technologies (SpaceX) Class A",
+          "weight": 2.35
+        }
+      ]
+    },
+    "396500.KS": {
+      "name": "TIGER 반도체TOP10",
+      "asOf": "2026-07-23",
+      "source": "미래에셋자산운용 TIGER ETF 공식 홈페이지(구성종목 PDF)",
+      "items": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "weight": 29.25
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "weight": 26.98
+        },
+        {
+          "code": "402340",
+          "name": "SK스퀘어",
+          "weight": 21.89
+        },
+        {
+          "code": "042700",
+          "name": "한미반도체",
+          "weight": 4.64
+        },
+        {
+          "code": "036930",
+          "name": "주성엔지니어링",
+          "weight": 4.08
+        },
+        {
+          "code": "007660",
+          "name": "이수페타시스",
+          "weight": 3.75
+        },
+        {
+          "code": "240810",
+          "name": "원익IPS",
+          "weight": 2.77
+        },
+        {
+          "code": "000990",
+          "name": "DB하이텍",
+          "weight": 2.42
+        },
+        {
+          "code": "058470",
+          "name": "리노공업",
+          "weight": 2.16
+        },
+        {
+          "code": "039030",
+          "name": "이오테크닉스",
+          "weight": 1.95
+        }
+      ]
+    },
+    "379800.KS": {
+      "name": "KODEX 미국S&P500",
+      "asOf": "2026-07-24",
+      "source": "삼성자산운용 KODEX 공식 페이지(상위 28종목 실측)+slickcharts.com S&P500(하위 22종목 보완) — 상위 50/505종목, 커버리지 약 63%",
+      "items": [
+        {
+          "code": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 7.97
+        },
+        {
+          "code": "AAPL",
+          "name": "Apple Inc",
+          "weight": 7.43
+        },
+        {
+          "code": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 4.5
+        },
+        {
+          "code": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 3.72
+        },
+        {
+          "code": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 3.11
+        },
+        {
+          "code": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 2.91
+        },
+        {
+          "code": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 2.51
+        },
+        {
+          "code": "META",
+          "name": "Meta Platforms Inc",
+          "weight": 2.14
+        },
+        {
+          "code": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 1.68
+        },
+        {
+          "code": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 1.63
+        },
+        {
+          "code": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 1.45
+        },
+        {
+          "code": "LLY",
+          "name": "Eli Lilly & Co",
+          "weight": 1.43
+        },
+        {
+          "code": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 1.4
+        },
+        {
+          "code": "BRK.B",
+          "name": "Berkshire Hathaway Inc Class B",
+          "weight": 1.39
+        },
+        {
+          "code": "XOM",
+          "name": "Exxon Mobil Corp",
+          "weight": 0.99
+        },
+        {
+          "code": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.95
+        },
+        {
+          "code": "V",
+          "name": "Visa Inc",
+          "weight": 0.91
+        },
+        {
+          "code": "INTC",
+          "name": "Intel Corp",
+          "weight": 0.75
+        },
+        {
+          "code": "WMT",
+          "name": "Walmart Inc",
+          "weight": 0.74
+        },
+        {
+          "code": "ABBV",
+          "name": "AbbVie Inc",
+          "weight": 0.69
+        },
+        {
+          "code": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.69
+        },
+        {
+          "code": "AMAT",
+          "name": "Applied Materials Inc",
+          "weight": 0.68
+        },
+        {
+          "code": "MA",
+          "name": "Mastercard Inc",
+          "weight": 0.67
+        },
+        {
+          "code": "COST",
+          "name": "Costco Wholesale Corp",
+          "weight": 0.64
+        },
+        {
+          "code": "CAT",
+          "name": "Caterpillar Inc",
+          "weight": 0.64
+        },
+        {
+          "code": "BAC",
+          "name": "Bank of America Corp",
+          "weight": 0.62
+        },
+        {
+          "code": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 0.62
+        },
+        {
+          "code": "UNH",
+          "name": "UnitedHealth Group Inc",
+          "weight": 0.61
+        },
+        {
+          "code": "CVX",
+          "name": "Chevron Corp",
+          "weight": 0.58
+        },
+        {
+          "code": "GE",
+          "name": "General Electric Co",
+          "weight": 0.54
+        },
+        {
+          "code": "ORCL",
+          "name": "Oracle Corp",
+          "weight": 0.52
+        },
+        {
+          "code": "KO",
+          "name": "Coca-Cola Co",
+          "weight": 0.52
+        },
+        {
+          "code": "PG",
+          "name": "Procter & Gamble Co",
+          "weight": 0.51
+        },
+        {
+          "code": "MS",
+          "name": "Morgan Stanley",
+          "weight": 0.5
+        },
+        {
+          "code": "HD",
+          "name": "Home Depot Inc",
+          "weight": 0.48
+        },
+        {
+          "code": "MRK",
+          "name": "Merck & Co Inc",
+          "weight": 0.48
+        },
+        {
+          "code": "GS",
+          "name": "Goldman Sachs Group Inc",
+          "weight": 0.47
+        },
+        {
+          "code": "PM",
+          "name": "Philip Morris International Inc",
+          "weight": 0.44
+        },
+        {
+          "code": "PLTR",
+          "name": "Palantir Technologies Inc",
+          "weight": 0.44
+        },
+        {
+          "code": "KLAC",
+          "name": "KLA Corp",
+          "weight": 0.43
+        },
+        {
+          "code": "NFLX",
+          "name": "Netflix Inc",
+          "weight": 0.42
+        },
+        {
+          "code": "DELL",
+          "name": "Dell Technologies Inc",
+          "weight": 0.42
+        },
+        {
+          "code": "RTX",
+          "name": "RTX Corp",
+          "weight": 0.42
+        },
+        {
+          "code": "GEV",
+          "name": "GE Vernova Inc",
+          "weight": 0.41
+        },
+        {
+          "code": "PANW",
+          "name": "Palo Alto Networks Inc",
+          "weight": 0.39
+        },
+        {
+          "code": "WFC",
+          "name": "Wells Fargo & Co",
+          "weight": 0.39
+        },
+        {
+          "code": "TXN",
+          "name": "Texas Instruments Inc",
+          "weight": 0.38
+        },
+        {
+          "code": "SNDK",
+          "name": "Sandisk Corp",
+          "weight": 0.35
+        },
+        {
+          "code": "LIN",
+          "name": "Linde PLC",
+          "weight": 0.35
+        },
+        {
+          "code": "AXP",
+          "name": "American Express Co",
+          "weight": 0.35
+        }
+      ]
+    }
+  }
 }
