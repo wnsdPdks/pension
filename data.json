@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-23T23:24:20",
+    "updated": "2026-07-23T23:25:31",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요."
   },
   "account": {
@@ -24,9 +24,14 @@
       "name": "KODEX 미국S&P500",
       "qty": 1273,
       "cost": 47992100
+    },
+    "0181B0.KS": {
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 3176,
+      "cost": 35999960
     }
   },
-  "cash": -120002298,
+  "cash": -156007658,
   "transactions": [
     {
       "id": 1,
@@ -48,6 +53,17 @@
       "qty": 1273,
       "price": 37700,
       "fee": 7199,
+      "reason": ""
+    },
+    {
+      "id": 3,
+      "ts": "2026-07-23T23:25:31",
+      "side": "buy",
+      "symbol": "0181B0.KS",
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 3176,
+      "price": 11335,
+      "fee": 5400,
       "reason": ""
     }
   ],
