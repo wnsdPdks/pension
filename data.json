@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:26:45",
+    "updated": "2026-07-24T06:27:27",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -26,9 +26,14 @@
       "name": "KODEX 미국S&P500",
       "qty": 1420,
       "cost": 34420800
+    },
+    "396500.KS": {
+      "name": "TIGER 반도체TOP10",
+      "qty": 1954,
+      "cost": 54078904
     }
   },
-  "cash": 298829783,
+  "cash": 244742767,
   "transactions": [
     {
       "id": 10,
@@ -46,6 +51,17 @@
       "qty": 1420,
       "price": 24240,
       "fee": 5163,
+      "reason": ""
+    },
+    {
+      "id": 12,
+      "ts": "2026-07-24T06:27:27",
+      "side": "buy",
+      "symbol": "396500.KS",
+      "name": "TIGER 반도체TOP10",
+      "qty": 1954,
+      "price": 27676,
+      "fee": 8112,
       "reason": ""
     }
   ],
