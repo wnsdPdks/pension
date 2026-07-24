@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:25:49",
+    "updated": "2026-07-24T06:26:06",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -26,14 +26,9 @@
       "name": "SOL 미국배당다우존스",
       "qty": 5124,
       "cost": 71992200
-    },
-    "396500.KS": {
-      "name": "TIGER 반도체TOP10",
-      "qty": 1273,
-      "cost": 47992100
     }
   },
-  "cash": 213253448,
+  "cash": 261252747,
   "transactions": [
     {
       "id": 1,
@@ -44,17 +39,6 @@
       "qty": 5124,
       "price": 14050,
       "fee": 10799,
-      "reason": ""
-    },
-    {
-      "id": 5,
-      "ts": "2026-07-23T23:28:39",
-      "side": "buy",
-      "symbol": "396500.KS",
-      "name": "TIGER 반도체TOP10",
-      "qty": 1273,
-      "price": 37700,
-      "fee": 7199,
       "reason": ""
     },
     {
