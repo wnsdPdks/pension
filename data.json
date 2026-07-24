@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:25:37",
+    "updated": "2026-07-24T06:25:40",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -27,11 +27,6 @@
       "qty": 5124,
       "cost": 71992200
     },
-    "0181B0.KS": {
-      "name": "HANARO미국AI메모리반도체TOP4+",
-      "qty": 3176,
-      "cost": 35999960
-    },
     "396500.KS": {
       "name": "TIGER 반도체TOP10",
       "qty": 1273,
@@ -43,7 +38,7 @@
       "cost": 47999640
     }
   },
-  "cash": -204014498,
+  "cash": -168009138,
   "transactions": [
     {
       "id": 1,
@@ -54,17 +49,6 @@
       "qty": 5124,
       "price": 14050,
       "fee": 10799,
-      "reason": ""
-    },
-    {
-      "id": 3,
-      "ts": "2026-07-23T23:25:31",
-      "side": "buy",
-      "symbol": "0181B0.KS",
-      "name": "HANARO미국AI메모리반도체TOP4+",
-      "qty": 3176,
-      "price": 11335,
-      "fee": 5400,
       "reason": ""
     },
     {
