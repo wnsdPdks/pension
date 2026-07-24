@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-07-24T01:32:28",
+    "updated": "2026-07-24T01:35:06",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -23,30 +23,19 @@
     "divTax": 0.15
   },
   "holdings": {
-    "BE": {
-      "name": "Bloom Energy",
-      "qty": 78,
-      "cost": 15306.8682
-    },
     "GEV": {
       "name": "GE Vernova",
       "qty": 2,
       "cost": 2037
-    }
-  },
-  "cash": -17344,
-  "transactions": [
-    {
-      "id": 1,
-      "ts": "2026-07-24T01:27:16",
-      "side": "buy",
-      "symbol": "BE",
+    },
+    "BE": {
       "name": "Bloom Energy",
       "qty": 39,
-      "price": 217.3,
-      "fee": 0,
-      "reason": ""
-    },
+      "cost": 6832.1682
+    }
+  },
+  "cash": -8869,
+  "transactions": [
     {
       "id": 2,
       "ts": "2026-07-24T01:30:00",
