@@ -272,12 +272,15 @@ function calc(){
 }
 const sum=(a,f)=>(a||[]).reduce((s,x)=>s+(f(x)||0),0);
 
-function lookThrough(c){
+function lookThrough(c,strict){
   const comp=DATA.etfCompositions||{};
   const map={}; let uncatVal=0; const uncatNames=[];
   for(const r of c.rows){
     const entry=comp[r.sym];
-    if(!entry||!entry.items||!entry.items.length){ uncatVal+=r.val; uncatNames.push(r.name); continue; }
+    if(!entry||!entry.items||!entry.items.length){
+      if(strict){ uncatVal+=r.val; uncatNames.push(r.name); }
+      continue;
+    }
     for(const it of entry.items){
       const v=r.val*(it.weight/100);
       if(!map[it.code]) map[it.code]={name:it.name,val:0};
@@ -342,7 +345,8 @@ function render(){
 
     // 개별 종목 비중 (ETF 룩스루)
     if(DATA.meta?.hasLookThrough){
-      const lt=lookThrough(c);
+      const strict=!(DATA.meta&&DATA.meta.mixedHoldings);
+      const lt=lookThrough(c,strict);
       if(lt.arr.length||lt.uncatVal>0){
         const base=c.total||1;
         html+=`<div class="card"><div class="sec-h"><span class="dot"></span>개별 종목 비중 <span style="font-weight:500;color:var(--sub)">(ETF 룩스루)</span></div>`;
