@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "meta": {
+    "title": "내 해외주식",
+    "subtitle": "예준 실전 운용 · 가족 공유",
+    "inception": "2026-07-24",
+    "updated": null,
+    "managerNote": "",
+    "currency": "USD",
+    "market": "US",
+    "hasLookThrough": false,
+    "assetWord": "종목",
+    "emptyMsg": "아직 산 종목이 없어요.",
+    "footerNote": "실제 보유 중인 해외주식입니다 · 투자 조언이 아닙니다"
+  },
+  "account": {
+    "initialCash": 0
+  },
+  "config": {
+    "feeRate": 0,
+    "tax": 0,
+    "divTax": 0.15
+  },
+  "holdings": {},
+  "cash": 0,
+  "transactions": [],
+  "notes": [],
+  "prices": {},
+  "navHistory": [],
+  "watchlist": []
+}

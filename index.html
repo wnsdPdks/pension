@@ -20,6 +20,11 @@ html,body{margin:0;background:var(--bg);color:var(--ink);
 .subtitle{font-size:12.5px;color:var(--sub);margin-top:2px;}
 .pill{font-size:11.5px;color:var(--sub);background:#eef2f9;border-radius:999px;padding:5px 10px;white-space:nowrap;}
 .pill b{color:#159a52;font-weight:700}
+.tabbar{display:flex;gap:8px;margin:0 0 14px}
+.tab-btn{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;
+  font-size:13.5px;font-weight:700;color:var(--sub);cursor:pointer}
+.tab-btn.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.tab-btn:active{transform:translateY(1px)}
 .btn{border:0;background:var(--brand);color:#fff;font-weight:700;font-size:13px;border-radius:10px;padding:9px 14px;cursor:pointer;}
 .btn:active{transform:translateY(1px)}
 .btn.ghost{background:#eaf0fb;color:var(--brand)}
@@ -125,6 +130,11 @@ html,body{margin:0;background:var(--bg);color:var(--ink);
     </div>
   </div>
 
+  <div class="tabbar" id="tabbar">
+    <button class="tab-btn on" data-k="pension" onclick="switchTab('pension')">아빠 연금</button>
+    <button class="tab-btn" data-k="overseas" onclick="switchTab('overseas')">내 해외주식</button>
+  </div>
+
   <div id="app"><div class="skel">불러오는 중…</div></div>
 
   <div class="foot" id="foot"></div>
@@ -143,6 +153,27 @@ const pct=n=>(n>=0?'+':'')+n.toFixed(2)+'%';
 const cls=n=>n>0?'up':n<0?'down':'flat';
 const arrow=n=>n>0?'▲':n<0?'▼':'–';
 let DATA=null, PX={};
+const PORTFOLIOS=[
+  {key:'pension', file:'data.json', label:'아빠 연금'},
+  {key:'overseas', file:'overseas.json', label:'내 해외주식'}
+];
+let PF='pension', FX=1400;
+function curFile(){return PORTFOLIOS.find(p=>p.key===PF).file;}
+function convFactor(){return (DATA&&DATA.meta&&DATA.meta.currency==='USD')?FX:1;}
+function shareStr(n){
+  return (DATA&&DATA.meta&&DATA.meta.currency==='USD')
+    ? ('$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}))
+    : (won(n)+'원');
+}
+function switchTab(key){
+  if(PF===key)return;
+  PF=key; side='buy';
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('on', b.dataset.k===key));
+  closeModal();
+  DATA=null; PX={};
+  $('app').innerHTML='<div class="skel">불러오는 중…</div>';
+  load();
+}
 
 /* ---------- 시세 ---------- */
 const PROXIES=[u=>u,u=>'https://corsproxy.io/?url='+encodeURIComponent(u),
@@ -183,25 +214,35 @@ async function yQuote(sym){
   return {price:m.regularMarketPrice,prevClose:m.chartPreviousClose??m.previousClose??null};
 }
 async function quote(sym){
+  if(DATA&&DATA.meta&&DATA.meta.market==='US') return await yQuote(sym);
   const code=sym.split('.')[0];
   if(kisBase){try{return await kQuote(code);}catch(e){}}
   try{return await nQuote(code);}catch(e){return await yQuote(sym);}
+}
+async function fetchFx(){
+  try{ const q=await yQuote('KRW=X'); if(q&&q.price) FX=q.price; }catch(e){}
 }
 
 /* ---------- 로드 ---------- */
 async function load(){
   try{
-    const r=await fetch('data.json?_='+Date.now());
+    const file=curFile();
+    const r=await fetch(file+'?_='+Date.now());
     DATA=await r.json();
     PX=Object.fromEntries(Object.entries(DATA.prices||{}).map(([k,v])=>[k,{price:v.price,prevClose:v.prevClose}]));
     render();
     await refresh();
-  }catch(e){ $('app').innerHTML='<div class="card empty">데이터를 불러오지 못했어요.<br>같은 폴더의 data.json을 확인해 주세요.</div>'; }
+  }catch(e){ $('app').innerHTML='<div class="card empty">데이터를 불러오지 못했어요.<br>같은 폴더의 '+curFile()+'을 확인해 주세요.</div>'; }
 }
 async function refresh(){
   if(!DATA)return;
   $('btn-refresh').disabled=true; $('btn-refresh').textContent='↻ 갱신 중…';
-  await checkKis();
+  if(DATA.meta&&DATA.meta.market==='US'){
+    kisBase=null; $('src-pill').innerHTML='시세 <span style="color:#68738a">Yahoo 지연</span>';
+    await fetchFx();
+  } else {
+    await checkKis();
+  }
   const syms=Object.keys(DATA.holdings||{});
   const res=await Promise.allSettled(syms.map(s=>quote(s).then(q=>[s,q])));
   for(const r of res){ if(r.status==='fulfilled'){const[s,q]=r.value; PX[s]={...PX[s],...q};} }
@@ -251,20 +292,22 @@ function lookThrough(c){
 /* ---------- 렌더 ---------- */
 function render(){
   if(!DATA)return;
+  document.title=DATA.meta?.title||document.title;
   $('m-title').textContent=DATA.meta?.title||'아빠 퇴직연금';
   $('m-sub').textContent=DATA.meta?.subtitle||'';
   const c=calc();
+  const cf=convFactor();
   let html='';
   // hero
   html+=`<div class="card hero">
     <div class="label">총 평가액</div>
-    <div class="total">${won(c.total)}<span style="font-size:20px;font-weight:700"> 원</span></div>
-    <div class="pl ${cls(c.pl)}">평가손익 ${c.pl>=0?'+':''}${won(c.pl)}원 (${pct(c.plPct)})</div>
+    <div class="total">${won(c.total*cf)}<span style="font-size:20px;font-weight:700"> 원</span></div>
+    <div class="pl ${cls(c.pl)}">평가손익 ${c.pl>=0?'+':''}${won(c.pl*cf)}원 (${pct(c.plPct)})</div>
     <div class="meta">
-      <span>원금 <b>${won(c.principal)}원</b></span>
-      <span>주식 <b>${won(c.stock)}원</b></span>
-      <span>현금 <b>${won(c.cash)}원</b></span>
-      ${c.stock?`<span>오늘 <b class="${cls(c.dayChange)}">${arrow(c.dayChange)} ${won(Math.abs(c.dayChange))}원 (${pct(c.dayPct)})</b></span>`:''}
+      <span>원금 <b>${won(c.principal*cf)}원</b></span>
+      <span>주식 <b>${won(c.stock*cf)}원</b></span>
+      <span>현금 <b>${won(c.cash*cf)}원</b></span>
+      ${c.stock?`<span>오늘 <b class="${cls(c.dayChange)}">${arrow(c.dayChange)} ${won(Math.abs(c.dayChange)*cf)}원 (${pct(c.dayPct)})</b></span>`:''}
     </div>
   </div>`;
 
@@ -273,51 +316,54 @@ function render(){
     const items=[...c.rows.map((r,i)=>({name:r.name,val:r.val,color:PALETTE[i%PALETTE.length]})),
                  {name:'현금',val:c.cash,color:'#cfd6e4'}];
     html+=`<div class="card"><div class="sec-h"><span class="dot"></span>자산 배분</div>
-      <div class="alloc">${donut(items,c.total)}<div class="legend">${
+      <div class="alloc">${donut(items,c.total,(DATA.meta?.assetWord||'ETF')+' 비중')}<div class="legend">${
         items.map(it=>`<div class="legrow"><span class="sw" style="background:${it.color}"></span>
           <span class="nm">${it.name}</span><span class="pc">${(it.val/c.total*100).toFixed(1)}%</span></div>`).join('')
       }</div></div></div>`;
 
-    // 보유 ETF
-    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>보유 ETF</div>`;
+    // 보유 ETF/종목
+    const assetWord=DATA.meta?.assetWord||'ETF';
+    html+=`<div class="card"><div class="sec-h"><span class="dot"></span>보유 ${assetWord}</div>`;
     for(let i=0;i<c.rows.length;i++){const r=c.rows[i];const col=PALETTE[i%PALETTE.length];
       html+=`<div class="hold">
         <div class="ic" style="background:${col}">${(r.name||'?').slice(0,2)}</div>
         <div class="info">
           <div class="nm">${r.name||r.sym}</div>
-          <div class="code">${r.sym.split('.')[0]} · ${r.qty}주 · 평단 ${won(r.avg)}</div>
+          <div class="code">${r.sym.split('.')[0]} · ${r.qty}주 · 평단 ${shareStr(r.avg)}</div>
           <div class="hbar"><span style="width:${(r.val/c.total*100).toFixed(1)}%;background:${col}"></span></div>
-          <div class="hd2"><span>평가액 <b>${won(r.val)}원</b></span>
+          <div class="hd2"><span>평가액 <b>${won(r.val*cf)}원</b></span>
             <span>평가손익 <b class="${cls(r.plPct)}">${pct(r.plPct)}</b></span></div>
         </div>
-        <div class="rt"><div class="px">${won(r.price)}</div>
+        <div class="rt"><div class="px">${shareStr(r.price)}</div>
           <div class="ch ${cls(r.dayPct)}">${arrow(r.dayPct)} ${pct(r.dayPct)}</div></div>
       </div>`;
     }
     html+=`</div>`;
 
     // 개별 종목 비중 (ETF 룩스루)
-    const lt=lookThrough(c);
-    if(lt.arr.length||lt.uncatVal>0){
-      const base=c.total||1;
-      html+=`<div class="card"><div class="sec-h"><span class="dot"></span>개별 종목 비중 <span style="font-weight:500;color:var(--sub)">(ETF 룩스루)</span></div>`;
-      lt.arr.slice(0,10).forEach((it,i)=>{
-        const p=it.val/base*100;
-        html+=`<div class="lt-row"><span class="rank">${i+1}</span><span class="nm2">${it.name}</span>
-          <div class="lt-bar"><span style="width:${Math.min(p,100).toFixed(1)}%"></span></div>
-          <span class="pc2">${p.toFixed(2)}%</span></div>`;
-      });
-      if(lt.uncatVal>0){
-        const p=lt.uncatVal/base*100;
-        html+=`<div class="lt-row"><span class="rank">–</span><span class="nm2" style="color:var(--sub)">미분류 (구성종목 미확인: ${lt.uncatNames.join(', ')})</span>
-          <div class="lt-bar"><span style="width:${Math.min(p,100).toFixed(1)}%;background:#cfd6e4"></span></div>
-          <span class="pc2">${p.toFixed(2)}%</span></div>`;
+    if(DATA.meta?.hasLookThrough){
+      const lt=lookThrough(c);
+      if(lt.arr.length||lt.uncatVal>0){
+        const base=c.total||1;
+        html+=`<div class="card"><div class="sec-h"><span class="dot"></span>개별 종목 비중 <span style="font-weight:500;color:var(--sub)">(ETF 룩스루)</span></div>`;
+        lt.arr.slice(0,10).forEach((it,i)=>{
+          const p=it.val/base*100;
+          html+=`<div class="lt-row"><span class="rank">${i+1}</span><span class="nm2">${it.name}</span>
+            <div class="lt-bar"><span style="width:${Math.min(p,100).toFixed(1)}%"></span></div>
+            <span class="pc2">${p.toFixed(2)}%</span></div>`;
+        });
+        if(lt.uncatVal>0){
+          const p=lt.uncatVal/base*100;
+          html+=`<div class="lt-row"><span class="rank">–</span><span class="nm2" style="color:var(--sub)">미분류 (구성종목 미확인: ${lt.uncatNames.join(', ')})</span>
+            <div class="lt-bar"><span style="width:${Math.min(p,100).toFixed(1)}%;background:#cfd6e4"></span></div>
+            <span class="pc2">${p.toFixed(2)}%</span></div>`;
+        }
+        const asOfs=Object.entries(DATA.etfCompositions||{}).map(([sym,e])=>`${e.name||sym.split('.')[0]} ${e.asOf||''}`).join(' · ');
+        html+=`<div class="small">${asOfs?'구성종목 기준: '+asOfs:'구성종목 데이터가 아직 없어요.'}</div></div>`;
       }
-      const asOfs=Object.entries(DATA.etfCompositions||{}).map(([sym,e])=>`${e.name||sym.split('.')[0]} ${e.asOf||''}`).join(' · ');
-      html+=`<div class="small">${asOfs?'구성종목 기준: '+asOfs:'구성종목 데이터가 아직 없어요.'}</div></div>`;
     }
   } else {
-    html+=`<div class="card"><div class="empty">아직 담은 ETF가 없어요.<br>
+    html+=`<div class="card"><div class="empty">${DATA.meta?.emptyMsg||'아직 담은 ETF가 없어요.'}<br>
       ${DATA.meta?.managerNote||'곧 포트폴리오를 구성할게요.'}</div></div>`;
   }
 
@@ -341,21 +387,22 @@ function render(){
 
   $('app').innerHTML=html;
   const up=DATA.meta?.updated;
-  $('foot').innerHTML=`모의 운용 · 실제 매매가 아닙니다<br>${up?'마지막 기록 '+up.replace('T',' ').slice(0,16):''}`;
+  $('foot').innerHTML=`${DATA.meta?.footerNote||'모의 운용 · 실제 매매가 아닙니다'}<br>${up?'마지막 기록 '+up.replace('T',' ').slice(0,16):''}`;
 }
 function eventHTML(t){
   const B={buy:['매수','b-buy'],sell:['매도','b-sell'],deposit:['입금','b-dep'],withdraw:['출금','b-wd'],dividend:['분배금','b-div']}[t.side]||['','b-dep'];
   const colors={buy:'var(--up)',sell:'var(--down)',deposit:'#5b8cff',withdraw:'#8a94a6',dividend:'#159a52'};
+  const cf=convFactor();
   let main='';
-  if(t.side==='deposit'||t.side==='withdraw') main=`${won(t.amount)}원`;
-  else if(t.side==='dividend') main=`${t.name||t.symbol} · 세후 +${won(t.net||0)}원`;
-  else main=`${t.name||t.symbol} ${t.qty}주 @ ${won(t.price)}원`;
+  if(t.side==='deposit'||t.side==='withdraw') main=`${won(t.amount*cf)}원`;
+  else if(t.side==='dividend') main=`${t.name||t.symbol} · 세후 +${won((t.net||0)*cf)}원`;
+  else main=`${t.name||t.symbol} ${t.qty}주 @ ${shareStr(t.price)}`;
   return `<div class="ev"><span class="mk" style="box-shadow:0 0 0 1.5px ${colors[t.side]||'#ccc'}"></span>
     <div class="row1"><span class="badge ${B[1]}">${B[0]}</span><span class="t">${t.ts.slice(0,10)}</span></div>
     <div class="main">${main}</div>
     ${t.reason?`<div class="reason">${esc(t.reason)}</div>`:''}</div>`;
 }
-function donut(items,total){
+function donut(items,total,label){
   const R=54,C=2*Math.PI*R,sz=140; let off=0; let segs='';
   const tot=total||1;
   for(const it of items){ if(it.val<=0)continue; const frac=it.val/tot;
@@ -363,14 +410,15 @@ function donut(items,total){
       stroke-dasharray="${(frac*C).toFixed(2)} ${C.toFixed(2)}" stroke-dashoffset="${(-off*C).toFixed(2)}"
       transform="rotate(-90 ${sz/2} ${sz/2})"/>`; off+=frac; }
   return `<svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}">${segs}
-    <text x="${sz/2}" y="${sz/2-4}" text-anchor="middle" font-size="11" fill="#68738a">ETF 비중</text>
+    <text x="${sz/2}" y="${sz/2-4}" text-anchor="middle" font-size="11" fill="#68738a">${label||'ETF 비중'}</text>
     <text x="${sz/2}" y="${sz/2+13}" text-anchor="middle" font-size="15" font-weight="800" fill="#1a2233">${
       (100-(items[items.length-1].val/tot*100)).toFixed(0)}%</text></svg>`;
 }
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 
 /* ---------- 관리자(매매 기록) : 사이트에서 바로 GitHub data.json에 커밋 ---------- */
-const GH_OWNER='wnsdPdks', GH_REPO='pension', GH_BRANCH='main', GH_PATH='data.json';
+const GH_OWNER='wnsdPdks', GH_REPO='pension', GH_BRANCH='main';
+function ghPath(){return curFile();}
 const TOK_KEY='pd_gh_token';
 const getTok=()=>localStorage.getItem(TOK_KEY)||'';
 const setTok=t=>t?localStorage.setItem(TOK_KEY,t):localStorage.removeItem(TOK_KEY);
@@ -378,21 +426,25 @@ function b64enc(str){return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})
 function b64dec(str){return decodeURIComponent(atob(str.replace(/\n/g,'')).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join(''));}
 
 async function ghGet(){
-  const r=await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}?ref=${GH_BRANCH}`,
+  const r=await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${ghPath()}?ref=${GH_BRANCH}`,
     {headers:{Authorization:'token '+getTok(),Accept:'application/vnd.github+json'}});
   if(!r.ok) throw new Error(r.status===404?'저장소/파일을 찾을 수 없어요':r.status===401?'토큰이 유효하지 않아요':'불러오기 실패 ('+r.status+')');
   const j=await r.json();
   return {sha:j.sha, data:JSON.parse(b64dec(j.content))};
 }
 async function ghPut(sha,data,message){
-  const r=await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
+  const r=await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${ghPath()}`,
     {method:'PUT',headers:{Authorization:'token '+getTok(),Accept:'application/vnd.github+json','Content-Type':'application/json'},
      body:JSON.stringify({message,content:b64enc(JSON.stringify(data,null,2)),sha,branch:GH_BRANCH})});
   if(!r.ok){ const t=await r.text().catch(()=>''); throw new Error('저장 실패 ('+r.status+') '+t.slice(0,140)); }
   return r.json();
 }
 
-function symOf(code){code=String(code); return code.includes('.')?code:code+'.KS';}
+function symOf(code){
+  code=String(code).trim().toUpperCase();
+  if(DATA&&DATA.meta&&DATA.meta.market==='US') return code;
+  return code.includes('.')?code:code+'.KS';
+}
 function nextId(d){
   const ids=[...(d.transactions||[]).map(t=>t.id||0), ...(d.notes||[]).map(n=>n.id||0)];
   return ids.length?Math.max(...ids)+1:1;
@@ -450,12 +502,13 @@ function val(id){const el=$(id); return el?el.value.trim():'';}
 
 function recentTxHtml(){
   const label={buy:'매수',sell:'매도',deposit:'입금',withdraw:'출금',dividend:'분배금'};
+  const cf=convFactor();
   const txs=[...(DATA.transactions||[])].sort((a,b)=>b.ts<a.ts?-1:b.ts>a.ts?1:(b.id||0)-(a.id||0)).slice(0,8);
   if(!txs.length) return '<div class="small">거래 내역 없음</div>';
   return txs.map(t=>{
-    const main=(t.side==='deposit'||t.side==='withdraw')?won(t.amount)+'원'
-      :t.side==='dividend'?`${t.name||t.symbol} 세후+${won(t.net||0)}원`
-      :`${t.name||t.symbol} ${t.qty}주@${won(t.price)}`;
+    const main=(t.side==='deposit'||t.side==='withdraw')?won(t.amount*cf)+'원'
+      :t.side==='dividend'?`${t.name||t.symbol} 세후+${won((t.net||0)*cf)}원`
+      :`${t.name||t.symbol} ${t.qty}주@${shareStr(t.price)}`;
     return `<div class="rtx"><span class="rmain">[${t.ts.slice(0,10)}] ${label[t.side]||t.side} ${main}</span>
       <button onclick="delTx(${t.id})">삭제</button></div>`;
   }).join('');
@@ -483,8 +536,10 @@ function renderAdmin(){
     dividend:['code','name','perShare','reason'], note:['text']
   };
   const fields=fieldsBySide[side];
-  const label={code:'종목코드(6자리)',name:'종목명',qty:'수량',price:'가격',amount:'금액',perShare:'주당 배당금',reason:'이유',text:'코멘트'};
-  const ph={code:'예: 069500',name:'예: KODEX 200'};
+  const isUS=DATA.meta&&DATA.meta.market==='US';
+  const label={code:isUS?'티커':'종목코드(6자리)',name:'종목명',qty:'수량',price:isUS?'가격($)':'가격',
+    amount:isUS?'금액($)':'금액',perShare:isUS?'주당 배당금($)':'주당 배당금',reason:'이유',text:'코멘트'};
+  const ph={code:isUS?'예: AAPL':'예: 069500',name:isUS?'예: Apple Inc':'예: KODEX 200'};
   const segLabel={buy:'매수',sell:'매도',deposit:'입금',withdraw:'출금',dividend:'분배금',note:'코멘트'};
   body.innerHTML=`<h3>매매 기록</h3>
     <div class="seg">${Object.keys(segLabel).map(s=>`<button class="${s===side?'on':''}" onclick="setSide('${s}')">${segLabel[s]}</button>`).join('')}</div>
@@ -522,10 +577,11 @@ function submitForm(){
   } else if(side==='dividend'){
     const code=val('f-code'), name=val('f-name'), perShare=Number(val('f-perShare')), reason=val('f-reason');
     if(!code||!perShare){alert('종목코드/주당 배당금을 입력하세요');return;}
+    const divTax=(DATA.config&&DATA.config.divTax!=null)?DATA.config.divTax:0.154;
     commit(d=>{
       const sym=symOf(code);
       const qty=(d.holdings&&d.holdings[sym]&&d.holdings[sym].qty)||0;
-      const gross=qty*perShare, tax=Math.round(gross*0.154);
+      const gross=qty*perShare, tax=Math.round(gross*divTax);
       d.transactions=d.transactions||[];
       d.transactions.push({id:nextId(d),ts:nowIso(),side:'dividend',symbol:sym,name,qty,price:perShare,tax,net:gross-tax,reason:reason||'분배금'});
     }, `분배금 ${name||code}`);

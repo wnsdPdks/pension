@@ -5,14 +5,21 @@
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
     "updated": "2026-07-24T01:03:25",
-    "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요."
+    "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
+    "currency": "KRW",
+    "market": "KR",
+    "hasLookThrough": true,
+    "assetWord": "ETF",
+    "emptyMsg": "아직 담은 ETF가 없어요.",
+    "footerNote": "모의 운용 · 실제 매매가 아닙니다"
   },
   "account": {
     "initialCash": 0
   },
   "config": {
     "feeRate": 0.00015,
-    "tax": 0
+    "tax": 0,
+    "divTax": 0.154
   },
   "holdings": {
     "446720.KS": {
