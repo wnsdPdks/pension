@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:26:11",
+    "updated": "2026-07-24T06:26:45",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -21,14 +21,31 @@
     "tax": 0,
     "divTax": 0.154
   },
-  "holdings": {},
-  "cash": 333255746,
+  "holdings": {
+    "379800.KS": {
+      "name": "KODEX 미국S&P500",
+      "qty": 1420,
+      "cost": 34420800
+    }
+  },
+  "cash": 298829783,
   "transactions": [
     {
       "id": 10,
       "ts": "2026-07-24T06:25:49",
       "side": "deposit",
       "amount": 333255746,
+      "reason": ""
+    },
+    {
+      "id": 11,
+      "ts": "2026-07-24T06:26:45",
+      "side": "buy",
+      "symbol": "379800.KS",
+      "name": "KODEX 미국S&P500",
+      "qty": 1420,
+      "price": 24240,
+      "fee": 5163,
       "reason": ""
     }
   ],
