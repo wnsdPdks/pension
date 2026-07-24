@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T01:03:25",
+    "updated": "2026-07-24T01:35:58",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -48,7 +48,7 @@
       "cost": 35986890
     }
   },
-  "cash": 99993214,
+  "cash": 100021214,
   "transactions": [
     {
       "id": 1,
@@ -110,6 +110,13 @@
       "qty": 1447,
       "price": 24870,
       "fee": 5398,
+      "reason": ""
+    },
+    {
+      "id": 10,
+      "ts": "2026-07-24T01:35:58",
+      "side": "deposit",
+      "amount": 28000,
       "reason": ""
     }
   ],
