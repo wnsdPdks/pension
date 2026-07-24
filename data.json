@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:28:03",
+    "updated": "2026-07-24T06:28:29",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -41,9 +41,14 @@
       "name": "SOL 미국배당다우존스",
       "qty": 5000,
       "cost": 70125000
+    },
+    "0176E0.KS": {
+      "name": "RISE 미국AI전력인프라액티브",
+      "qty": 2627,
+      "cost": 29598409
     }
   },
-  "cash": 146615550,
+  "cash": 117012701,
   "transactions": [
     {
       "id": 10,
@@ -94,6 +99,17 @@
       "qty": 5000,
       "price": 14025,
       "fee": 10519,
+      "reason": ""
+    },
+    {
+      "id": 15,
+      "ts": "2026-07-24T06:28:29",
+      "side": "buy",
+      "symbol": "0176E0.KS",
+      "name": "RISE 미국AI전력인프라액티브",
+      "qty": 2627,
+      "price": 11267,
+      "fee": 4440,
       "reason": ""
     }
   ],
