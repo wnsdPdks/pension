@@ -258,7 +258,7 @@ function calc(){
     const p=PX[sym]||{}; const avg=h.qty?h.cost/h.qty:0;
     const price=p.price??avg; const prev=p.prevClose??price;
     const val=price*h.qty; stock+=val; prevStock+=prev*h.qty; cost+=h.cost;
-    rows.push({sym,name:h.name,qty:h.qty,avg,price,prev,val,
+    rows.push({sym,name:h.name,qty:h.qty,avg,price,prev,val,pl:val-h.cost,
       plPct:avg?(price/avg-1)*100:0, dayPct:prev?(price/prev-1)*100:0});
   }
   rows.sort((a,b)=>b.val-a.val);
@@ -335,7 +335,7 @@ function render(){
           <div class="code">${r.sym.split('.')[0]} · ${r.qty}주 · 평단 ${shareStr(r.avg)}</div>
           <div class="hbar"><span style="width:${(r.val/c.total*100).toFixed(1)}%;background:${col}"></span></div>
           <div class="hd2"><span>평가액 <b>${won(r.val*cf)}원</b></span>
-            <span>평가손익 <b class="${cls(r.plPct)}">${pct(r.plPct)}</b></span></div>
+            <span>평가손익 <b class="${cls(r.plPct)}">${r.pl>=0?'+':''}${won(r.pl*cf)}원 (${pct(r.plPct)})</b></span></div>
         </div>
         <div class="rt"><div class="px">${shareStr(r.price)}</div>
           <div class="ch ${cls(r.dayPct)}">${arrow(r.dayPct)} ${pct(r.dayPct)}</div></div>
