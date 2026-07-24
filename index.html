@@ -54,7 +54,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);
 .hd2{display:flex;justify-content:space-between;font-size:12px;color:var(--sub);margin-top:8px}
 .hd2 b{color:var(--ink)}
 /* notes / timeline */
-.note{font-size:14px;line-height:1.65;color:#2b3547;background:#f6f9ff;border:1px solid #e3ecff;border-radius:12px;padding:13px 15px;margin-bottom:10px;}
+.note{font-size:14px;line-height:1.65;color:#2b3547;background:#f6f9ff;border:1px solid #e3ecff;border-radius:12px;padding:13px 15px;margin-bottom:10px;white-space:pre-wrap;}
 .note .when{font-size:11.5px;color:var(--sub);margin-bottom:4px}
 .tl{position:relative;padding-left:22px;}
 .tl:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
@@ -66,7 +66,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);
 .b-buy{background:var(--up)} .b-sell{background:var(--down)} .b-dep{background:#5b8cff} .b-div{background:#159a52} .b-wd{background:#8a94a6}
 .ev .t{font-size:11.5px;color:var(--sub)}
 .ev .main{font-size:14px;font-weight:700;margin:3px 0 2px}
-.ev .reason{font-size:13px;color:#48546b;line-height:1.6}
+.ev .reason{font-size:13px;color:#48546b;line-height:1.6;white-space:pre-wrap}
 .empty{text-align:center;color:var(--sub);padding:26px 10px;font-size:14px;line-height:1.7}
 .foot{text-align:center;color:#aab2c2;font-size:11.5px;margin-top:22px;line-height:1.6}
 .skel{color:var(--sub);text-align:center;padding:40px;font-size:14px}
@@ -460,6 +460,12 @@ function recentTxHtml(){
       <button onclick="delTx(${t.id})">삭제</button></div>`;
   }).join('');
 }
+function recentNotesHtml(){
+  const notes=[...(DATA.notes||[])].sort((a,b)=>b.ts<a.ts?-1:b.ts>a.ts?1:(b.id||0)-(a.id||0)).slice(0,8);
+  if(!notes.length) return '<div class="small">코멘트 없음</div>';
+  return notes.map(n=>`<div class="rtx"><span class="rmain">[${n.ts.slice(0,10)}] ${esc(n.text).replace(/\n/g,' ')}</span>
+    <button onclick="delTx(${n.id})">삭제</button></div>`).join('');
+}
 
 function renderAdmin(){
   const body=$('modal-body'); if(!body||!DATA) return;
@@ -490,6 +496,8 @@ function renderAdmin(){
     <div class="msg" id="m-msg"></div>
     <h3>최근 거래</h3>
     <div id="recent-tx">${recentTxHtml()}</div>
+    <h3>최근 코멘트</h3>
+    <div id="recent-notes">${recentNotesHtml()}</div>
     <div class="small link" onclick="if(confirm('토큰을 이 기기에서 지울까요?')){setTok('');renderAdmin();}">토큰 지우기</div>`;
 }
 
