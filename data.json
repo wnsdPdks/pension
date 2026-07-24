@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:25:40",
+    "updated": "2026-07-24T06:25:42",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -31,14 +31,9 @@
       "name": "TIGER 반도체TOP10",
       "qty": 1273,
       "cost": 47992100
-    },
-    "0176E0.KS": {
-      "name": "RISE 미국AI전력인프라액티브",
-      "qty": 4244,
-      "cost": 47999640
     }
   },
-  "cash": -168009138,
+  "cash": -120002298,
   "transactions": [
     {
       "id": 1,
@@ -60,17 +55,6 @@
       "qty": 1273,
       "price": 37700,
       "fee": 7199,
-      "reason": ""
-    },
-    {
-      "id": 6,
-      "ts": "2026-07-23T23:32:53",
-      "side": "buy",
-      "symbol": "0176E0.KS",
-      "name": "RISE 미국AI전력인프라액티브",
-      "qty": 4244,
-      "price": 11310,
-      "fee": 7200,
       "reason": ""
     }
   ],
