@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": null,
+    "updated": "2026-07-24T01:27:16",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -21,9 +21,27 @@
     "tax": 0,
     "divTax": 0.15
   },
-  "holdings": {},
-  "cash": 0,
-  "transactions": [],
+  "holdings": {
+    "BE": {
+      "name": "Bloom Energy",
+      "qty": 39,
+      "cost": 8474.7
+    }
+  },
+  "cash": -8475,
+  "transactions": [
+    {
+      "id": 1,
+      "ts": "2026-07-24T01:27:16",
+      "side": "buy",
+      "symbol": "BE",
+      "name": "Bloom Energy",
+      "qty": 39,
+      "price": 217.3,
+      "fee": 0,
+      "reason": ""
+    }
+  ],
   "notes": [],
   "prices": {},
   "navHistory": [],
