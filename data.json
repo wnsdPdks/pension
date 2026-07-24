@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-24T06:26:06",
+    "updated": "2026-07-24T06:26:11",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -21,26 +21,9 @@
     "tax": 0,
     "divTax": 0.154
   },
-  "holdings": {
-    "446720.KS": {
-      "name": "SOL 미국배당다우존스",
-      "qty": 5124,
-      "cost": 71992200
-    }
-  },
-  "cash": 261252747,
+  "holdings": {},
+  "cash": 333255746,
   "transactions": [
-    {
-      "id": 1,
-      "ts": "2026-07-23T23:23:19",
-      "side": "buy",
-      "symbol": "446720.KS",
-      "name": "SOL 미국배당다우존스",
-      "qty": 5124,
-      "price": 14050,
-      "fee": 10799,
-      "reason": ""
-    },
     {
       "id": 10,
       "ts": "2026-07-24T06:25:49",
