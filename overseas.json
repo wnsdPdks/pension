@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-07-24T01:54:02",
+    "updated": "2026-07-27T23:11:23",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -35,8 +35,8 @@
     },
     "DRAM": {
       "name": "DRAM",
-      "qty": 121,
-      "cost": 5082
+      "qty": 109,
+      "cost": 4578
     },
     "MU": {
       "name": "Micron Technology",
@@ -49,7 +49,7 @@
       "cost": 437.9
     }
   },
-  "cash": 11,
+  "cash": 638,
   "transactions": [
     {
       "id": 2,
@@ -112,6 +112,18 @@
       "price": 15.1,
       "fee": 0,
       "reason": ""
+    },
+    {
+      "id": 8,
+      "ts": "2026-07-27T23:11:23",
+      "side": "sell",
+      "symbol": "DRAM",
+      "name": "DRAM",
+      "qty": 12,
+      "price": 52.22,
+      "fee": 0,
+      "reason": "",
+      "tax": 0
     }
   ],
   "notes": [],
