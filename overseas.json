@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-07-27T23:11:56",
+    "updated": "2026-07-27T23:12:10",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -42,14 +42,9 @@
       "name": "Micron Technology",
       "qty": 10,
       "cost": 6350
-    },
-    "VG": {
-      "name": "VentureGlobal",
-      "qty": 29,
-      "cost": 437.9
     }
   },
-  "cash": 2109,
+  "cash": 2501,
   "transactions": [
     {
       "id": 2,
@@ -157,6 +152,18 @@
       "name": "GE Vernova",
       "qty": 1,
       "price": 960.37,
+      "fee": 0,
+      "reason": "",
+      "tax": 0
+    },
+    {
+      "id": 12,
+      "ts": "2026-07-27T23:12:10",
+      "side": "sell",
+      "symbol": "VG",
+      "name": "VentureGlobal",
+      "qty": 29,
+      "price": 13.5,
       "fee": 0,
       "reason": "",
       "tax": 0
