@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-07-27T23:13:46",
+    "updated": "2026-07-28T00:41:21",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -45,11 +45,11 @@
     },
     "GOOGL": {
       "name": "Alphabet Class A",
-      "qty": 2,
-      "cost": 660.22
+      "qty": 3,
+      "cost": 987.6500000000001
     }
   },
-  "cash": -80,
+  "cash": -408,
   "transactions": [
     {
       "id": 2,
@@ -180,6 +180,17 @@
       "name": "Alphabet Class A",
       "qty": 2,
       "price": 330.11,
+      "fee": 0,
+      "reason": ""
+    },
+    {
+      "id": 15,
+      "ts": "2026-07-28T00:41:21",
+      "side": "buy",
+      "symbol": "GOOGL",
+      "name": "Alphabet Class A",
+      "qty": 1,
+      "price": 327.43,
       "fee": 0,
       "reason": ""
     }
