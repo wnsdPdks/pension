@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-07-30T08:41:02",
+    "updated": "2026-07-31T07:59:41",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -30,26 +30,21 @@
     },
     "BE": {
       "name": "Bloom Energy",
-      "qty": 51,
-      "cost": 8795.2986
+      "qty": 55,
+      "cost": 9614.7386
     },
     "DRAM": {
       "name": "DRAM",
-      "qty": 80,
-      "cost": 3360.0
+      "qty": 72,
+      "cost": 3024.0
     },
     "MU": {
       "name": "Micron Technology",
       "qty": 10,
       "cost": 6350.0
-    },
-    "GOOGL": {
-      "name": "Alphabet Class A",
-      "qty": 3,
-      "cost": 987.65
     }
   },
-  "cash": -1492.7586,
+  "cash": -923.3385,
   "transactions": [
     {
       "id": 2,
@@ -215,6 +210,41 @@
       "qty": 12,
       "price": 163.5942,
       "fee": 4.9,
+      "reason": ""
+    },
+    {
+      "id": 18,
+      "ts": "2026-07-30T22:30:00",
+      "side": "sell",
+      "symbol": "GOOGL",
+      "name": "Alphabet Class A",
+      "qty": 3,
+      "price": 332.5367,
+      "fee": 2.51,
+      "reason": "",
+      "tax": 0
+    },
+    {
+      "id": 19,
+      "ts": "2026-07-30T22:35:00",
+      "side": "sell",
+      "symbol": "DRAM",
+      "name": "DRAM",
+      "qty": 8,
+      "price": 49.6,
+      "fee": 1.0,
+      "reason": "",
+      "tax": 0
+    },
+    {
+      "id": 20,
+      "ts": "2026-07-30T22:40:00",
+      "side": "buy",
+      "symbol": "BE",
+      "name": "Bloom Energy",
+      "qty": 4,
+      "price": 204.86,
+      "fee": 2.04,
       "reason": ""
     }
   ],
