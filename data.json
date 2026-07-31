@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-07-30T23:15:29",
+    "updated": "2026-07-31T03:56:31",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -34,21 +34,21 @@
     },
     "0181B0.KS": {
       "name": "HANARO미국AI메모리반도체TOP4+",
-      "qty": 2500,
-      "cost": 27987500
+      "qty": 3000,
+      "cost": 33000000
     },
     "446720.KS": {
       "name": "SOL 미국배당다우존스",
-      "qty": 5000,
-      "cost": 70125000
+      "qty": 4280,
+      "cost": 60027000
     },
     "0176E0.KS": {
       "name": "RISE 미국AI전력인프라액티브",
-      "qty": 2627,
-      "cost": 29598409
+      "qty": 3127,
+      "cost": 34656349
     }
   },
-  "cash": 117012701,
+  "cash": 116990442,
   "transactions": [
     {
       "id": 10,
@@ -111,6 +111,51 @@
       "price": 11267,
       "fee": 4440,
       "reason": ""
+    },
+    {
+      "id": 19,
+      "reason": "",
+      "ts": "2026-07-31T12:20:00",
+      "side": "buy",
+      "symbol": "0176E0.KS",
+      "name": "RISE 미국AI전력인프라액티브",
+      "qty": 224,
+      "price": 10080,
+      "fee": 339
+    },
+    {
+      "id": 20,
+      "reason": "",
+      "ts": "2026-07-31T12:21:00",
+      "side": "buy",
+      "symbol": "0176E0.KS",
+      "name": "RISE 미국AI전력인프라액티브",
+      "qty": 276,
+      "price": 10145,
+      "fee": 420
+    },
+    {
+      "id": 21,
+      "reason": "",
+      "ts": "2026-07-31T12:22:00",
+      "side": "buy",
+      "symbol": "0181B0.KS",
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 500,
+      "price": 10025,
+      "fee": 752
+    },
+    {
+      "id": 22,
+      "reason": "",
+      "ts": "2026-07-31T12:23:00",
+      "side": "sell",
+      "symbol": "446720.KS",
+      "name": "SOL 미국배당다우존스",
+      "qty": 720,
+      "price": 13960,
+      "fee": 1508,
+      "tax": 0
     }
   ],
   "notes": [
