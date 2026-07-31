@@ -152,6 +152,8 @@ const won=n=>Math.round(n).toLocaleString('ko-KR');
 const pct=n=>(n>=0?'+':'')+n.toFixed(2)+'%';
 const cls=n=>n>0?'up':n<0?'down':'flat';
 const arrow=n=>n>0?'▲':n<0?'▼':'–';
+const colr=n=>n>0?'var(--up)':n<0?'var(--down)':'var(--flat)';
+const signed=n=>(n>=0?'+':'')+won(n)+'원';
 let DATA=null, PX={};
 const PORTFOLIOS=[
   {key:'pension', file:'data.json', label:'아빠 연금'},
@@ -276,7 +278,9 @@ function calc(){
   const principal=(DATA.account?.initialCash||0)
     +sum(DATA.transactions,t=>t.side==='deposit'?t.amount:0)
     -sum(DATA.transactions,t=>t.side==='withdraw'?t.amount:0);
-  return {rows,stock,cash,total,principal,cost,
+  const unrealized=stock-cost;
+  return {rows,stock,cash,total,principal,cost,unrealized,
+    realized:(total-principal)-unrealized,
     pl:total-principal, plPct:principal?(total/principal-1)*100:0,
     dayChange:stock-prevStock, dayPct:prevStock?(stock/prevStock-1)*100:0};
 }
@@ -315,12 +319,13 @@ function render(){
   html+=`<div class="card hero">
     <div class="label">총 평가액</div>
     <div class="total">${won(c.total*cf)}<span style="font-size:20px;font-weight:700"> 원</span></div>
-    <div class="pl ${cls(c.pl)}">평가손익 ${c.pl>=0?'+':''}${won(c.pl*cf)}원 (${pct(c.plPct)})</div>
+    <div class="pl ${cls(c.pl)}">총손익 ${signed(c.pl*cf)} (${pct(c.plPct)})<span style="font-weight:600;color:var(--sub);font-size:12.5px"> · 최초 설정금액 대비</span></div>
     <div class="meta">
       <span>원금 <b>${won(c.principal*cf)}원</b></span>
-      <span>주식 <b>${won(c.stock*cf)}원</b></span>
+      <span>거래손익(실현) <b style="color:${colr(c.realized)}">${signed(c.realized*cf)}</b></span>
+      <span>평가손익(미실현) <b style="color:${colr(c.unrealized)}">${signed(c.unrealized*cf)}</b></span>
       <span>현금 <b>${won(c.cash*cf)}원</b></span>
-      ${c.stock?`<span>오늘 <b class="${cls(c.dayChange)}">${arrow(c.dayChange)} ${won(Math.abs(c.dayChange)*cf)}원 (${pct(c.dayPct)})</b></span>`:''}
+      ${c.stock?`<span>오늘 <b style="color:${colr(c.dayChange)}">${arrow(c.dayChange)} ${won(Math.abs(c.dayChange)*cf)}원 (${pct(c.dayPct)})</b></span>`:''}
     </div>
   </div>`;
 
