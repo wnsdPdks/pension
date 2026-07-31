@@ -205,7 +205,17 @@ async function kQuote(code){
 }
 async function nQuote(code){
   const j=await fetchJson('https://polling.finance.naver.com/api/realtime/domestic/stock/'+code);
-  const d=(j.datas||[])[0]; if(!d||d.nv==null)throw 0;
+  const d=(j.datas||[])[0]; if(!d)throw 0;
+  // 신형 네이버 포맷 (closePriceRaw = 현재가, compareToPreviousClosePriceRaw = 등락폭, compareToPreviousPrice.code: 1/2 상승,3 보합,4/5 하락)
+  if(d.closePriceRaw!=null){
+    const price=Number(d.closePriceRaw); if(!price)throw 0;
+    const chg=Number(d.compareToPreviousClosePriceRaw||0);
+    const dc=d.compareToPreviousPrice&&d.compareToPreviousPrice.code;
+    const sign=(dc==='4'||dc==='5')?-1:(dc==='3'?0:1);
+    return {price,prevClose:price-sign*chg,name:d.stockName};
+  }
+  // 구형 포맷 폴백
+  if(d.nv==null)throw 0;
   return {price:d.nv,prevClose:d.sv??(d.cv!=null?d.nv-d.cv:null),name:d.nm};
 }
 async function yQuote(sym){
