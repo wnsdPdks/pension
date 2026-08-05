@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-08-04T23:43:47",
+    "updated": "2026-08-05T00:55:20",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -34,8 +34,8 @@
     },
     "0181B0.KS": {
       "name": "HANARO미국AI메모리반도체TOP4+",
-      "qty": 3487,
-      "cost": 38030710
+      "qty": 3615,
+      "cost": 39336310
     },
     "446720.KS": {
       "name": "SOL 미국배당다우존스",
@@ -48,7 +48,7 @@
       "cost": 46727464
     }
   },
-  "cash": 118345581,
+  "cash": 117039785,
   "transactions": [
     {
       "id": 10,
@@ -236,6 +236,17 @@
       "fee": 210,
       "reason": "",
       "tax": 0
+    },
+    {
+      "id": 31,
+      "ts": "2026-08-05T00:55:20",
+      "side": "buy",
+      "symbol": "0181B0.KS",
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 128,
+      "price": 10200,
+      "fee": 196,
+      "reason": ""
     }
   ],
   "notes": [
