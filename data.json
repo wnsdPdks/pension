@@ -4,7 +4,7 @@
     "title": "아빠 퇴직연금 (IRP)",
     "subtitle": "ETF 모의 운용 · 예준 관리",
     "inception": "2026-07-23",
-    "updated": "2026-08-05T00:55:20",
+    "updated": "2026-08-05T07:09:21",
     "managerNote": "아직 포트폴리오를 구성하기 전이에요. 곧 ETF를 담을게요.",
     "currency": "KRW",
     "market": "KR",
@@ -22,11 +22,6 @@
     "divTax": 0.154
   },
   "holdings": {
-    "379800.KS": {
-      "name": "KODEX 미국S&P500",
-      "qty": 1420,
-      "cost": 34420800
-    },
     "396500.KS": {
       "name": "TIGER 반도체TOP10",
       "qty": 1954,
@@ -34,8 +29,8 @@
     },
     "0181B0.KS": {
       "name": "HANARO미국AI메모리반도체TOP4+",
-      "qty": 3615,
-      "cost": 39336310
+      "qty": 4815,
+      "cost": 51777825
     },
     "446720.KS": {
       "name": "SOL 미국배당다우존스",
@@ -44,11 +39,16 @@
     },
     "0176E0.KS": {
       "name": "RISE 미국AI전력인프라액티브",
-      "qty": 4289,
-      "cost": 46727464
+      "qty": 5489,
+      "cost": 59741464
+    },
+    "0173Y0.KS": {
+      "name": "KODEX 미국AI광통신네트워크",
+      "qty": 1000,
+      "cost": 12155000
     }
   },
-  "cash": 117039785,
+  "cash": 114818919,
   "transactions": [
     {
       "id": 10,
@@ -247,6 +247,62 @@
       "price": 10200,
       "fee": 196,
       "reason": ""
+    },
+    {
+      "id": 32,
+      "reason": "",
+      "ts": "2026-08-05T12:00:00",
+      "side": "buy",
+      "symbol": "0173Y0.KS",
+      "name": "KODEX 미국AI광통신네트워크",
+      "qty": 1000,
+      "price": 12155,
+      "fee": 1823
+    },
+    {
+      "id": 33,
+      "reason": "",
+      "ts": "2026-08-05T12:01:00",
+      "side": "buy",
+      "symbol": "0176E0.KS",
+      "name": "RISE 미국AI전력인프라액티브",
+      "qty": 1200,
+      "price": 10845,
+      "fee": 1952
+    },
+    {
+      "id": 34,
+      "reason": "",
+      "ts": "2026-08-05T12:03:00",
+      "side": "buy",
+      "symbol": "0181B0.KS",
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 71,
+      "price": 10335,
+      "fee": 110
+    },
+    {
+      "id": 35,
+      "reason": "",
+      "ts": "2026-08-05T12:04:00",
+      "side": "buy",
+      "symbol": "0181B0.KS",
+      "name": "HANARO미국AI메모리반도체TOP4+",
+      "qty": 1129,
+      "price": 10370,
+      "fee": 1756
+    },
+    {
+      "id": 36,
+      "reason": "",
+      "ts": "2026-08-05T12:05:00",
+      "side": "sell",
+      "symbol": "379800.KS",
+      "name": "KODEX 미국S&P500",
+      "qty": 1420,
+      "price": 24930,
+      "fee": 5310,
+      "tax": 0
     }
   ],
   "notes": [
