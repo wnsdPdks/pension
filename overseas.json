@@ -4,7 +4,7 @@
     "title": "내 해외주식",
     "subtitle": "예준 실전 운용 · 가족 공유",
     "inception": "2026-07-24",
-    "updated": "2026-08-04T23:09:09",
+    "updated": "2026-08-05T00:20:51",
     "managerNote": "",
     "currency": "USD",
     "market": "US",
@@ -49,7 +49,7 @@
       "cost": 1012.91
     }
   },
-  "cash": -2453,
+  "cash": -453,
   "transactions": [
     {
       "id": 2,
@@ -295,6 +295,13 @@
       "qty": 1,
       "price": 228.13,
       "fee": 0,
+      "reason": ""
+    },
+    {
+      "id": 25,
+      "ts": "2026-08-05T00:20:51",
+      "side": "deposit",
+      "amount": 2000,
       "reason": ""
     }
   ],
