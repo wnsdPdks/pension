@@ -178,9 +178,9 @@ function switchTab(key){
 }
 
 /* ---------- 시세 ---------- */
-const PROXIES=[u=>u,u=>'https://corsproxy.io/?url='+encodeURIComponent(u),
-  u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
-  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)];
+const PROXIES=[u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u),
+  u=>'https://corsproxy.io/?url='+encodeURIComponent(u),u=>u];
 let goodProxy=+(localStorage.getItem('pf_proxy')||0);
 async function fetchJson(url){
   const order=[...new Set([goodProxy,0,1,2,3])];
@@ -229,7 +229,7 @@ async function quote(sym){
   if(DATA&&DATA.meta&&DATA.meta.market==='US') return await yQuote(sym);
   const code=sym.split('.')[0];
   if(kisBase){try{return await kQuote(code);}catch(e){}}
-  try{return await nQuote(code);}catch(e){return await yQuote(sym);}
+  return await nQuote(code); /* 국내 ETF는 네이버만: 야후 .KS는 지연/오류값이라 폴백 금지 */
 }
 async function fetchFx(){
   try{ const q=await yQuote('KRW=X'); if(q&&q.price) FX=q.price; }catch(e){}
