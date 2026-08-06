@@ -184,11 +184,13 @@ const PROXIES=[u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
 let goodProxy=+(localStorage.getItem('pf_proxy')||0);
 async function fetchJson(url){
   const order=[...new Set([goodProxy,0,1,2,3])];
+  for(let attempt=0;attempt<3;attempt++){
   for(const i of order){try{
-    const r=await fetch(PROXIES[i](url),{signal:AbortSignal.timeout(9000)});
+    const r=await fetch(PROXIES[i](url),{signal:AbortSignal.timeout(8000)});
     if(!r.ok)continue; const j=await r.json();
     goodProxy=i; localStorage.setItem('pf_proxy',i); return j;
   }catch(e){}}
+  }
   throw new Error('시세 실패');
 }
 const KIS_REMOTE='https://wqehreukcaluzjjzhdew.supabase.co/functions/v1/kis-quote';
